@@ -10,6 +10,7 @@
 
 # production
 /build
+/instructions-rock-paper-scissors-master
 
 # misc
 .DS_Store
