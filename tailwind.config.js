@@ -2,6 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    borderWidth: {
+      DEFAULT: "1px",
+      0: "0",
+      2: "2px",
+      3: "3px",
+      4: "4px",
+      6: "6px",
+      8: "8px",
+    },
     extend: {
       colors: {
         "scissors-1": "hsl(39, 89%, 49%)",
@@ -19,6 +28,16 @@ module.exports = {
         "header-outline": "hsl(217, 16%, 45%)",
         "radial-1": "hsl(214, 47%, 23%)",
         "radial-2": "hsl(237, 49%, 15%)",
+      },
+      width: {
+        18: "4.5rem",
+        13: "3.25rem",
+      },
+      height: {
+        18: "4.5rem",
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
     },
   },
