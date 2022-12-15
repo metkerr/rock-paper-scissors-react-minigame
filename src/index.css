@@ -6,16 +6,14 @@
 
 body{
   font-family: 'Barlow Semi Condensed', sans-serif;
-}
 
-#App{
   background: hsla(214, 47%, 23%, 1);
 
-background: linear-gradient(270deg, hsla(214, 47%, 23%, 1) 0%, hsla(238, 48%, 15%, 1) 100%);
+  background: radial-gradient(closest-corner, hsla(214, 47%, 23%, 1) 55%, hsla(238, 48%, 15%, 1) 100%);
 
-background: -moz-linear-gradient(270deg, hsla(214, 47%, 23%, 1) 0%, hsla(238, 48%, 15%, 1) 100%);
+  background: -moz-radial-gradient(closest-corner, hsla(214, 47%, 23%, 1) 55%, hsla(238, 48%, 15%, 1) 100%);
 
-background: -webkit-linear-gradient(270deg, hsla(214, 47%, 23%, 1) 0%, hsla(238, 48%, 15%, 1) 100%);
+  background: -webkit-radial-gradient(closest-corner, hsla(214, 47%, 23%, 1) 55%, hsla(238, 48%, 15%, 1) 100%);
 
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#1f3756", endColorstr="#141539", GradientType=1 );
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#1f3756", endColorstr="#141539", GradientType=1 );
 }

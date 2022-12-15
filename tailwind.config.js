@@ -28,13 +28,20 @@ module.exports = {
         "header-outline": "hsl(217, 16%, 45%)",
         "radial-1": "hsl(214, 47%, 23%)",
         "radial-2": "hsl(237, 49%, 15%)",
+        "dark-blue": "#1F2C46",
       },
       width: {
         18: "4.5rem",
         13: "3.25rem",
+        54: "13.5rem",
+        78: "19.5rem",
       },
       height: {
         18: "4.5rem",
+        54: "13.5rem",
+      },
+      minHeight: {
+        nam: "68vh",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

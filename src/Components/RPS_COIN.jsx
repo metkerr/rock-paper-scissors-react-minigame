@@ -5,7 +5,7 @@ import iconScissors from "../images/icon-scissors.svg";
 import iconLizard from "../images/icon-lizard.svg";
 import iconSpock from "../images/icon-spock.svg";
 
-function RPS_COIN({ gacok = "scissors", className }) {
+function RPS_COIN({ gacok = "scissors", className, size = 6, onClick }) {
   const list = {
     rock: {
       icon: iconRock,
@@ -17,7 +17,7 @@ function RPS_COIN({ gacok = "scissors", className }) {
     },
     scissors: {
       icon: iconScissors,
-      className: "from-scissors-2 to-scissors-1 border-yellow-600",
+      className: "from-scissors-2 to-scissors-1 border-amber-600",
     },
     lizard: {
       icon: iconLizard,
@@ -29,18 +29,37 @@ function RPS_COIN({ gacok = "scissors", className }) {
     },
   };
 
-  console.log(list[gacok].className);
   return (
-    <div id="RPC-COINS" className={className}>
+    <div
+      id="RPC-COINS"
+      className={`active:opacity-80 select-none sm:cursor-pointer ${className}`}
+      onClick={onClick}
+      title={gacok}
+    >
       <div
         id="rpsc-container"
-        className={`bg-gradient-to-b border-b-4 w-24 h-24 rounded-full flex ${list[gacok].className}`}
+        className={`bg-gradient-to-b border-b-4 rounded-full flex ${list[gacok].className}`}
+        style={{
+          width: `${size}rem`,
+          height: `${size}rem`,
+          borderBottomWidth: `${size * 0.75}px`,
+        }}
       >
         <div
           id="rpsc-wrapper"
-          className="w-18 h-18 bg-white rounded-full border-t-4 border-gray-300 m-auto flex"
+          className="bg-white rounded-full border-t-4 border-gray-300 m-auto flex"
+          style={{
+            width: `${size * 0.75}rem`,
+            height: `${size * 0.75}rem`,
+            borderTopWidth: `${size * 0.7}px`,
+          }}
         >
-          <img src={list[gacok].icon} alt="paper icon" className="w-8 m-auto" />
+          <img
+            src={list[gacok].icon}
+            alt="paper icon"
+            className="m-auto"
+            style={{ width: `${size * 0.3333}rem` }}
+          />
         </div>
       </div>
     </div>
@@ -49,6 +68,9 @@ function RPS_COIN({ gacok = "scissors", className }) {
 
 RPS_COIN.propTypes = {
   gacok: PropTypes.oneOf(["rock", "paper", "scissors", "lizard", "spock"]),
+  size: PropTypes.number,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default RPS_COIN;
