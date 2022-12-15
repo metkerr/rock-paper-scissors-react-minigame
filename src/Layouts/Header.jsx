@@ -1,6 +1,6 @@
 import gameLogo from "../images/logo-bonus.svg";
 
-export default function Header() {
+export default function Header({ totalScore }) {
   return (
     <header className="flex">
       <div
@@ -26,10 +26,10 @@ export default function Header() {
               SCORE
             </p>
             <span
-              className="text-neutral-600 text-4xl font-bold"
+              className="text-neutral-600 text-4xl font-bold text-center"
               style={{ fontSize: "2.5rem" }}
             >
-              12
+              {totalScore}
             </span>
           </div>
         </div>
