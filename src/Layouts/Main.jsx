@@ -149,7 +149,11 @@ export default function Main({ handleTotalScore }) {
                 name="Play again"
                 className="py-2.5 px-14 bg-white rounded-md text-radial-1 mx-auto text-lg"
                 style={{ letterSpacing: "0.2rem" }}
-                onClick={() => setPlayerPick(undefined)}
+                onClick={() => (
+                  setPlayerPick(undefined),
+                  setGameResult(undefined),
+                  setShowHouseGacok(false)
+                )}
               >
                 PLAY AGAIN
               </button>

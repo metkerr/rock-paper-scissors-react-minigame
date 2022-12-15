@@ -1,12 +1,24 @@
 import Header from "./Layouts/Header";
 import Main from "./Layouts/Main";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [totalScore, setTotalScore] = useState(0);
+  const [totalScore, setTotalScore] = useState();
+
+  useEffect(() => {
+    const getLocalStorageScore = JSON.parse(localStorage.getItem("totalScore"));
+    if (getLocalStorageScore) {
+      setTotalScore(getLocalStorageScore);
+    } else {
+      setTotalScore(0);
+    }
+  }, []);
+
   const handleTotalScore = (result) => {
     setTotalScore(totalScore + result);
+    localStorage.setItem("totalScore", JSON.stringify(totalScore + result));
   };
+
   return (
     <div id="App" className="w-full flex flex-col gap-14">
       <Header totalScore={totalScore} />
