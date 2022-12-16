@@ -20,7 +20,7 @@ export default function Header({ totalScore }) {
         >
           <div id="score-wrapper" className="flex flex-col m-auto">
             <p
-              className="text-score tracking-widest text-2xs sm:text-base sm:font-bold"
+              className="text-score tracking-widest text-2xs sm:text-base sm:font-bold text-center"
               style={{ lineHeight: "0.8rem" }}
             >
               SCORE

@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <div id="App" className="w-full flex flex-col gap-14">
+    <div id="App" className="w-full flex min-w-min flex-col gap-14">
       <Header totalScore={totalScore} />
       <Main handleTotalScore={handleTotalScore} />
     </div>

@@ -16,6 +16,8 @@ body{
   background: -webkit-radial-gradient(closest-corner, hsla(214, 47%, 23%, 1) 55%, hsla(238, 48%, 15%, 1) 100%);
 
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#1f3756", endColorstr="#141539", GradientType=1 );
+
+  overflow-x: hidden;
 }
 
 @media screen and (min-width: 640px){
@@ -29,10 +31,32 @@ body{
     height: 6.75rem !important;
   }
 
-  .rpsc-wrapper > img {
-    
+  .rpsc-wrapper > img {    
     width: 3.15rem !important;
     height: 3.15rem !important;
   }
+
+  .player-coin > .rpsc-container, .home-coin > .rpsc-container{    
+    width: 18rem !important;
+    height: 18rem !important;
+    border-bottom-width: 12px !important;
+  }
+
+  .player-coin > .rpsc-container > .rpsc-wrapper, .home-coin > .rpsc-container > .rpsc-wrapper{    
+    width: 13.2rem !important;
+    height: 13.2rem !important;
+    border-top-width: 12px !important;
+  }
+
+  .player-coin > .rpsc-container img, .home-coin > .rpsc-container img{    
+    width: 5.7rem !important;
+    height: 7.3rem !important;
+  }
+
   
+}
+@media screen and (min-width:1024px) {  
+  #play-wrapper{
+    gap: 23rem;
+  }
 }

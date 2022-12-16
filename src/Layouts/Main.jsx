@@ -13,8 +13,6 @@ export default function Main({ handleTotalScore }) {
   const [showHouseGacok, setShowHouseGacok] = useState(false);
   const [gameResult, setGameResult] = useState();
 
-  console.log(`is mobile?: ${useIsMobile()}`);
-
   useEffect(() => {
     if (gameResult === "YOU LOSE") {
       handleTotalScore(-1);
@@ -121,52 +119,54 @@ export default function Main({ handleTotalScore }) {
     return (
       <div
         id="user-play"
-        className={`text-white tracking-widest flex flex-col mt-12 ${
+        className={`text-white tracking-widest flex flex-col mt-12 sm:mt-2 ${
           gameResult ? "-mb-1" : "mb-48"
         }`}
       >
-        <div id="play-wrapper" className="flex mx-auto gap-12">
-          <div id="player-picked" className="flex flex-col gap-4">
-            <div className="relative">
+        <div id={gameResult && "play-wrapper"} className="flex mx-auto gap-12">
+          <div id="player-picked" className="flex flex-col gap-4 sm:gap-14">
+            <div className="relative sm:order-last">
               {gameResult === "YOU WIN" && (
-                <div className="w-32 h-32 rounded-full bg-dark-blue absolute z-0 animate-ping" />
+                <div className="w-32 h-32 rounded-full bg-dark-blue absolute z-0 animate-ping sm:w-64 sm:h-64 sm:top-3 sm:left-3" />
               )}
               <RPS_COIN
                 gacok={playerPick}
                 size={8.2}
-                className="z-10 relative"
+                className="player-coin z-10 relative"
                 index="22"
               />
             </div>
-            <span className="text-center">YOU PICKED</span>
+            <span className="text-center sm:text-2xl">YOU PICKED</span>
           </div>
-          <div id="house-picked" className="flex flex-col gap-4">
+          <div id="house-picked" className="flex flex-col gap-4 sm:gap-14">
             {showHouseGacok ? (
-              <div className="relative flex">
+              <div className="relative flex sm:order-last">
                 {gameResult === "YOU LOSE" && (
-                  <div className="w-32 h-32 rounded-full bg-dark-blue absolute z-0 animate-ping left-2.5 top-0.5" />
+                  <div className="w-32 h-32 rounded-full bg-dark-blue absolute z-0 animate-ping left-2.5 sm:w-64 sm:h-64 sm:top-3.5 sm:left-3" />
                 )}
                 <RPS_COIN
                   gacok={houseGacok}
                   size={8.2}
-                  className="mx-auto relative z-10"
+                  className="home-coin mx-auto relative z-10"
                   index="55"
                 />
               </div>
             ) : (
               <div
                 id="house-gacok-placeholder"
-                className="rounded-full flex mx-auto"
-                style={{ width: "8.2rem", height: "8.2rem" }}
+                className="rounded-full flex mx-auto w-30 h-30 sm:order-last sm:w-72 sm:h-72"
               >
-                <div className="w-28 h-28 rounded-full bg-dark-blue m-auto opacity-60 animate-bounce" />
+                <div className=" w-28 h-28 sm:w-56 sm:h-56 rounded-full bg-dark-blue m-auto opacity-60 animate-bounce" />
               </div>
             )}
-            <span className="text-center">THE HOUSE PICKED</span>
+            <span className="text-center sm:text-2xl">THE HOUSE PICKED</span>
           </div>
         </div>
         {gameResult && (
-          <div id="game-result-container" className="w-full flex mt-2">
+          <div
+            id="game-result-container"
+            className="w-full flex mt-2 lg:-mt-72 sm:mb-8"
+          >
             <div
               id="game-result-wrapper"
               className="mx-auto mt-16 flex gap-5 flex-col text-center"
@@ -176,7 +176,7 @@ export default function Main({ handleTotalScore }) {
               </p>
               <button
                 name="Play again"
-                className="py-2.5 px-14 bg-white rounded-md text-radial-1 mx-auto text-lg"
+                className="py-2.5 px-14 bg-white rounded-md text-radial-1 mx-auto text-lg active:bg-gray-300 sm:hover:bg-gray-200"
                 style={{ letterSpacing: "0.2rem" }}
                 onClick={anotherOne}
               >

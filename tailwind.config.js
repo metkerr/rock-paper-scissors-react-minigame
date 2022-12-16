@@ -34,6 +34,7 @@ module.exports = {
         18: "4.5rem",
         13: "3.25rem",
         26: "6.5rem",
+        30: "8.2rem",
         38: "9.3rem",
         54: "13.5rem",
         78: "19.5rem",
@@ -44,6 +45,7 @@ module.exports = {
       height: {
         18: "4.5rem",
         26: "6.5rem",
+        30: "8.2rem",
         38: "9.5rem",
         54: "13.5rem",
         88: "22rem",
