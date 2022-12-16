@@ -33,18 +33,33 @@ module.exports = {
       width: {
         18: "4.5rem",
         13: "3.25rem",
+        26: "6.5rem",
+        38: "9.3rem",
         54: "13.5rem",
         78: "19.5rem",
+        88: "22rem",
+        108: "26rem",
+        168: "43rem",
       },
       height: {
         18: "4.5rem",
+        26: "6.5rem",
+        38: "9.5rem",
         54: "13.5rem",
+        88: "22rem",
       },
       minHeight: {
         nam: "68vh",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
+      borderRadius: {
+        xl: "1rem",
+      },
+      fontSize: {
+        "2xs": "0.65rem",
+        "4.5xl": "2.5rem",
       },
     },
   },

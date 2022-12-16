@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import RPS_COIN from "../Components/RPS_COIN";
 import pentagonPattern from "../images/bg-pentagon.svg";
+import pentagonPatternDesktop from "../images/bg-pentagon_desktop.svg";
 import rulesImage from "../images/image-rules-bonus.svg";
 import iconClose from "../images/icon-close.svg";
+import useIsMobile from "../utils/useIsMobile";
 
 export default function Main({ handleTotalScore }) {
   const [isRulesOpen, setIsRulesOpen] = useState(false);
@@ -10,6 +12,8 @@ export default function Main({ handleTotalScore }) {
   const [houseGacok, setHouseGacok] = useState();
   const [showHouseGacok, setShowHouseGacok] = useState(false);
   const [gameResult, setGameResult] = useState();
+
+  console.log(`is mobile?: ${useIsMobile()}`);
 
   useEffect(() => {
     if (gameResult === "YOU LOSE") {
@@ -56,35 +60,58 @@ export default function Main({ handleTotalScore }) {
     }, 1600);
   };
 
+  const anotherOne = () => {
+    //play again
+    setPlayerPick(undefined);
+    setGameResult(undefined);
+    setShowHouseGacok(false);
+    return;
+  };
+
   const MainContentHome = () => {
     return (
       <div
         id="main-content-wrapper-1"
-        className="w-54 h-54 mx-auto my-24 bg-contain bg-no-repeat bg-center flex flex-col relative"
-        style={{ backgroundImage: `url(${pentagonPattern})` }}
+        className="w-54 h-54 mx-auto my-24 bg-contain bg-no-repeat bg-center flex flex-col relative sm:w-80 sm:h-80"
+        style={{
+          backgroundImage: `url(${
+            useIsMobile() ? pentagonPattern : pentagonPatternDesktop
+          })`,
+        }}
       >
-        <span className="flex -top-12 absolute w-full">
+        <span className="flex -top-12 absolute w-full sm:-top-20">
           <RPS_COIN
             gacok="scissors"
             className="mx-auto"
             onClick={() => handleGameOn("scissors")}
+            index="1"
           />
         </span>
-        <span className="flex absolute gap-28 top-8">
+        <span className="flex absolute gap-28 sm:gap-44 top-8">
           <RPS_COIN
             gacok="spock"
-            className="-ml-12"
+            className="-ml-12 sm:-ml-20"
             onClick={() => handleGameOn("spock")}
+            index="2"
           />
-          <RPS_COIN gacok="paper" onClick={() => handleGameOn("paper")} />
+          <RPS_COIN
+            gacok="paper"
+            onClick={() => handleGameOn("paper")}
+            index="3"
+          />
         </span>
-        <span className="flex absolute gap-12 -bottom-10">
+        <span className="flex absolute gap-12 -bottom-10 sm:gap-14 sm:-bottom-16">
           <RPS_COIN
             gacok="lizard"
-            className="-ml-5"
+            className="-ml-5 sm:-ml-4"
             onClick={() => handleGameOn("lizard")}
+            index="4"
           />
-          <RPS_COIN gacok="rock" onClick={() => handleGameOn("rock")} />
+          <RPS_COIN
+            gacok="rock"
+            onClick={() => handleGameOn("rock")}
+            index="5"
+          />
         </span>
       </div>
     );
@@ -108,6 +135,7 @@ export default function Main({ handleTotalScore }) {
                 gacok={playerPick}
                 size={8.2}
                 className="z-10 relative"
+                index="22"
               />
             </div>
             <span className="text-center">YOU PICKED</span>
@@ -122,6 +150,7 @@ export default function Main({ handleTotalScore }) {
                   gacok={houseGacok}
                   size={8.2}
                   className="mx-auto relative z-10"
+                  index="55"
                 />
               </div>
             ) : (
@@ -149,11 +178,7 @@ export default function Main({ handleTotalScore }) {
                 name="Play again"
                 className="py-2.5 px-14 bg-white rounded-md text-radial-1 mx-auto text-lg"
                 style={{ letterSpacing: "0.2rem" }}
-                onClick={() => (
-                  setPlayerPick(undefined),
-                  setGameResult(undefined),
-                  setShowHouseGacok(false)
-                )}
+                onClick={anotherOne}
               >
                 PLAY AGAIN
               </button>
@@ -168,20 +193,27 @@ export default function Main({ handleTotalScore }) {
     return (
       <div
         id="rules-modal"
-        className="hidden w-full min-h-full absolute bg-white top-0 pb-10"
+        className="hidden w-full min-h-full absolute bg-white top-0 pb-10 z-50 sm:bg-black sm:bg-opacity-40 sm:flex sm:hidden sm:pt-36"
         style={{ display: isRulesOpen && "block" }}
       >
-        <div id="rules-modal-wrapper" className="flex flex-col pt-20">
-          <h1 className="mx-auto text-3xl font-bold text-dark basis-24 shrink-0">
+        <div
+          id="rules-modal-wrapper"
+          className="flex flex-col pt-20 sm:bg-white sm:w-108 sm:mx-auto sm:pt-6 sm:rounded-lg sm:px-5 sm:relative"
+        >
+          <h1 className="mx-auto text-3xl font-bold text-dark basis-24 shrink-0 sm:m-0 sm:pl-3 sm:basis-0">
             RULES
           </h1>
-          <div className="basis-80 mt-10">
-            <img src={rulesImage} alt="rules" className="mx-auto w-78" />
+          <div className="basis-80 mt-10 sm:my-8">
+            <img
+              src={rulesImage}
+              alt="rules"
+              className="mx-auto w-78 sm:w-88"
+            />
           </div>
-          <div className="mx-auto">
+          <div className="mx-auto sm:absolute right-0">
             <button
               name="exit rules modal button"
-              className="mt-24 p-6"
+              className="mt-24 p-6 sm:mt-0 sm:pt-2.5"
               onClick={() => setIsRulesOpen(false)}
             >
               <img src={iconClose} alt="icon close" />
@@ -193,15 +225,18 @@ export default function Main({ handleTotalScore }) {
   };
 
   return (
-    <main className="min-h-nam mb-10">
+    <main className="min-h-nam mb-10 sm:min-h-nam sm:mb-0">
       <div id="main-content" className="w-full relative">
         {playerPick ? <UserPlay /> : <MainContentHome />}
       </div>
-      <div id="rules" className="text-white tracking-wide w-full relative">
+      <div
+        id="rules"
+        className="text-white tracking-wide w-full relative sm:static"
+      >
         <div id="rules-wrapper" className="w-full flex">
           <button
             name="open-rules"
-            className="rounded-lg mx-auto py-2 px-9 border-2 mt-14 border-gray-500"
+            className="rounded-lg mx-auto py-2 px-9 border-2 mt-14 border-gray-500 sm:absolute sm:right-10 sm:bottom-4"
             style={{ letterSpacing: "0.2rem" }}
             onClick={() => setIsRulesOpen(true)}
           >

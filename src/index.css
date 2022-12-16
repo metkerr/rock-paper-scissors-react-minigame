@@ -17,3 +17,22 @@ body{
 
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#1f3756", endColorstr="#141539", GradientType=1 );
 }
+
+@media screen and (min-width: 640px){
+  .rpsc-container{
+    width: 9rem !important;
+    height: 9rem !important;
+  }
+
+  .rpsc-wrapper{    
+    width: 6.75rem !important;
+    height: 6.75rem !important;
+  }
+
+  .rpsc-wrapper > img {
+    
+    width: 3.15rem !important;
+    height: 3.15rem !important;
+  }
+  
+}

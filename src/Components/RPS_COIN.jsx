@@ -5,7 +5,13 @@ import iconScissors from "../images/icon-scissors.svg";
 import iconLizard from "../images/icon-lizard.svg";
 import iconSpock from "../images/icon-spock.svg";
 
-function RPS_COIN({ gacok = "scissors", className, size = 6, onClick }) {
+function RPS_COIN({
+  gacok = "scissors",
+  className,
+  size = 6,
+  onClick,
+  index = 0,
+}) {
   const list = {
     rock: {
       icon: iconRock,
@@ -31,14 +37,13 @@ function RPS_COIN({ gacok = "scissors", className, size = 6, onClick }) {
 
   return (
     <div
-      id="RPC-COINS"
+      id={`RPC_COIN_${index}`}
       className={`active:opacity-80 select-none sm:cursor-pointer ${className}`}
       onClick={onClick}
       title={gacok}
     >
       <div
-        id="rpsc-container"
-        className={`bg-gradient-to-b border-b-4 rounded-full flex ${list[gacok].className}`}
+        className={`rpsc-container bg-gradient-to-b border-b-4 rounded-full flex ${list[gacok].className}`}
         style={{
           width: `${size}rem`,
           height: `${size}rem`,
@@ -46,8 +51,7 @@ function RPS_COIN({ gacok = "scissors", className, size = 6, onClick }) {
         }}
       >
         <div
-          id="rpsc-wrapper"
-          className="bg-white rounded-full border-t-4 border-gray-300 m-auto flex"
+          className="rpsc-wrapper bg-white rounded-full border-t-4 border-gray-300 m-auto flex"
           style={{
             width: `${size * 0.75}rem`,
             height: `${size * 0.75}rem`,
