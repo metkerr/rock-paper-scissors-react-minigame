@@ -38,7 +38,7 @@ Users should be able to:
 - Solution URL: [Github](https://github.com/metkerr/rock-paper-scissors-react-minigame.git)
 
 
-- Live Site URL: [Live on Vercel](http://rock-paper-scissors-react-game.vercel.app/)
+- Live Site URL: [Live on Vercel](https://rock-paper-scissors-react-game.vercel.app/)
 
 ## My process
 
