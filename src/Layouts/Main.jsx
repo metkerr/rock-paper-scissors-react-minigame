@@ -32,14 +32,14 @@ export default function Main({ handleTotalScore }) {
     }
   }, [gameResult]);
 
-  const handleGameOn = (playerGacok) => {
+  const handleGameOn = async (playerGacok) => {
     const randomNumPick = (Math.random() * (4 - 0 + 1)) << 0; //random index pick 0-4
     const gacokList = ["scissors", "paper", "rock", "lizard", "spock"];
     const gacok = gacokList[randomNumPick];
     setHouseGacok(gacok);
     setPlayerPick(playerGacok);
     let result;
-    new Audio(playerPickAudio).play();
+    await new Audio(playerPickAudio).play();
 
     if (gacok === playerGacok) {
       result = "Tie!";
@@ -60,25 +60,25 @@ export default function Main({ handleTotalScore }) {
       result = "YOU WIN";
     }
 
-    setTimeout(() => {
+    setTimeout(async () => {
       setShowHouseGacok(true);
       setGameResult(result);
       if (result === "Tie!") {
-        new Audio(tie).play();
+        await new Audio(tie).play();
       } else if (result === "YOU WIN") {
-        new Audio(playerWin).play();
+        await new Audio(playerWin).play();
       } else {
-        new Audio(playerLose).play();
+        await new Audio(playerLose).play();
       }
     }, 1600);
   };
 
-  const anotherOne = () => {
+  const anotherOne = async () => {
     //play again
     setPlayerPick(undefined);
     setGameResult(undefined);
     setShowHouseGacok(false);
-    new Audio(playAgain).play();
+    await new Audio(playAgain).play();
     return;
   };
 
@@ -205,13 +205,13 @@ export default function Main({ handleTotalScore }) {
     );
   };
 
-  const handleRulesToggle = (rulesState) => {
+  const handleRulesToggle = async (rulesState) => {
     setIsRulesOpen(rulesState);
 
     if (rulesState) {
-      new Audio(rulesOpen).play();
+      await new Audio(rulesOpen).play();
     } else {
-      new Audio(rulesClose).play();
+      await new Audio(rulesClose).play();
     }
     return;
   };
