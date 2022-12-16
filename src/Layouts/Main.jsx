@@ -5,6 +5,13 @@ import pentagonPatternDesktop from "../images/bg-pentagon_desktop.svg";
 import rulesImage from "../images/image-rules-bonus.svg";
 import iconClose from "../images/icon-close.svg";
 import useIsMobile from "../utils/useIsMobile";
+import rulesOpen from "../audio/rules_open.ogg";
+import rulesClose from "../audio/rules_close.ogg";
+import playerPickAudio from "../audio/player_pick.ogg";
+import tie from "../audio/tie.ogg";
+import playerWin from "../audio/you_win.ogg";
+import playerLose from "../audio/you_lose.ogg";
+import playAgain from "../audio/play_again.ogg";
 
 export default function Main({ handleTotalScore }) {
   const [isRulesOpen, setIsRulesOpen] = useState(false);
@@ -32,6 +39,7 @@ export default function Main({ handleTotalScore }) {
     setHouseGacok(gacok);
     setPlayerPick(playerGacok);
     let result;
+    new Audio(playerPickAudio).play();
 
     if (gacok === playerGacok) {
       result = "Tie!";
@@ -55,6 +63,13 @@ export default function Main({ handleTotalScore }) {
     setTimeout(() => {
       setShowHouseGacok(true);
       setGameResult(result);
+      if (result === "Tie!") {
+        new Audio(tie).play();
+      } else if (result === "YOU WIN") {
+        new Audio(playerWin).play();
+      } else {
+        new Audio(playerLose).play();
+      }
     }, 1600);
   };
 
@@ -63,6 +78,7 @@ export default function Main({ handleTotalScore }) {
     setPlayerPick(undefined);
     setGameResult(undefined);
     setShowHouseGacok(false);
+    new Audio(playAgain).play();
     return;
   };
 
@@ -189,6 +205,17 @@ export default function Main({ handleTotalScore }) {
     );
   };
 
+  const handleRulesToggle = (rulesState) => {
+    setIsRulesOpen(rulesState);
+
+    if (rulesState) {
+      new Audio(rulesOpen).play();
+    } else {
+      new Audio(rulesClose).play();
+    }
+    return;
+  };
+
   const RulesComponent = () => {
     return (
       <div
@@ -214,7 +241,7 @@ export default function Main({ handleTotalScore }) {
             <button
               name="exit rules modal button"
               className="mt-24 p-6 sm:mt-0 sm:pt-2.5"
-              onClick={() => setIsRulesOpen(false)}
+              onClick={() => handleRulesToggle(false)}
             >
               <img src={iconClose} alt="icon close" />
             </button>
@@ -238,7 +265,7 @@ export default function Main({ handleTotalScore }) {
             name="open-rules"
             className="rounded-lg mx-auto py-2 px-9 border-2 mt-14 border-gray-500 sm:absolute sm:right-10 sm:bottom-4"
             style={{ letterSpacing: "0.2rem" }}
-            onClick={() => setIsRulesOpen(true)}
+            onClick={() => handleRulesToggle(true)}
           >
             RULES
           </button>

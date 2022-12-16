@@ -12,6 +12,7 @@ function App() {
     } else {
       setTotalScore(0);
     }
+    return;
   }, []);
 
   const handleTotalScore = (result) => {
