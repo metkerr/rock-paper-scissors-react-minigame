@@ -19,6 +19,24 @@ body{
 
   overflow-x: hidden;
 }
+  
+#game-result-wrapper{
+  animation: grw 0.15s;
+}
+
+@keyframes grw {
+  0%{transform: scale(0);opacity: 0;}
+  100%{transform: scale(1);opacity: 100%;}    
+}
+
+@media screen and (max-width: 640px) {
+  #rules-modal{animation: mrm 0.15s;}
+  @keyframes mrm {
+    0%{opacity: 0; top:20rem;}
+    100%{opacity: 100%; top:0}
+    
+  }  
+}
 
 @media screen and (min-width: 640px){
   .rpsc-container{
@@ -52,9 +70,9 @@ body{
     width: 5.7rem !important;
     height: 7.3rem !important;
   }
-
   
 }
+
 @media screen and (min-width:1024px) {  
   #play-wrapper{
     gap: 23rem;
